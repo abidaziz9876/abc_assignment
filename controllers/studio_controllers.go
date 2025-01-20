@@ -74,7 +74,6 @@ func CreateClassesController() gin.HandlerFunc {
 
 		// Call service to create the class
 		services.CreateClass(class)
-		
 
 		ctx.JSON(http.StatusCreated, gin.H{"message": "Class created successfully", "class": class})
 	}
@@ -110,7 +109,7 @@ func CreateBooking() gin.HandlerFunc {
 		}
 		date, err := parseDate(dateStr, "date")
 		if err != nil {
-			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid date format for date"})
 			return
 		}
 
